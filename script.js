@@ -10,40 +10,8 @@ const search = document.getElementById('search');
 
 
 
-function highlightSelection() {
-    const tags = document.querySelectorAll('.tag');
-    tags.forEach(tag => {
-        tag.classList.remove('highlight')
-    })
-    clearBtn()
-    if(selectedGenre.length !=0){   
-        selectedGenre.forEach(id => {
-            const hightlightedTag = document.getElementById(id);
-            hightlightedTag.classList.add('highlight');
-        })
-    }
 
-}
 
-function clearBtn(){
-    let clearBtn = document.getElementById('clear');
-    if(clearBtn){
-        clearBtn.classList.add('highlight')
-    }else{
-            
-        let clear = document.createElement('div');
-        clear.classList.add('tag','highlight');
-        clear.id = 'clear';
-        clear.innerText = 'Clear x';
-        clear.addEventListener('click', () => {
-            selectedGenre = [];
-            setGenre();            
-            getMovies(API_URL);
-        })
-        tagsEl.append(clear);
-    }
-    
-}
 
 getMovies(API_URL);
 
@@ -111,16 +79,3 @@ form.addEventListener('submit', (e) => {
 
 })
 
-// // Prevent the Form from submitting if the search bar is empty.
-// form.addEventListener("submit", (e) => {
-//     e.preventDefault();
-//     main.innerHTML = '';
-     
-//     const searchTerm = search.value;
-//  /* Adding the value wriiten in the search bar to the search Api,
-//     in order to get the movies we search for. */
-//     if (searchTerm) {
-//         showMovies(SEARCHAPI + searchTerm);
-//         search.value = "";
-//     }
-// });
